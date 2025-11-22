@@ -1,0 +1,10 @@
+{
+  "name": "@gpx-monorepo/gpx-viewer-e2e",
+  "version": "0.0.1",
+  "private": true,
+  "nx": {
+    "implicitDependencies": [
+      "@gpx-monorepo/gpx-viewer"
+    ]
+  }
+}
