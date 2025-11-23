@@ -27,7 +27,7 @@ export interface ParsedGpx {
 
 export const parseGpx = (gpxContent: string): ParsedGpx => {
     const parser = new DOMParser();
-    const xmlDoc = parser.parseFromString(gpxContent, 'text/xml');
+    const xmlDoc = parser.parseFromString(gpxContent.trim(), 'text/xml');
     const geoJson = gpx(xmlDoc);
 
     const trackPoints: TrackPoint[] = [];

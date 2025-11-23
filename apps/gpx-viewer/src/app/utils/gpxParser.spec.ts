@@ -3,7 +3,7 @@ import { parseGpx } from './gpxParser';
 describe('gpxParser', () => {
   const mockGpxContent = `
     <?xml version="1.0" encoding="UTF-8"?>
-    <gpx version="1.1" creator="Test">
+    <gpx version="1.1" creator="Test" xmlns:gpxtpx="http://www.garmin.com/xmlschemas/TrackPointExtension/v1">
       <trk>
         <name>Test Run</name>
         <trkseg>
@@ -40,9 +40,6 @@ describe('gpxParser', () => {
 
   it('should calculate statistics correctly', () => {
     const result = parseGpx(mockGpxContent);
-    if (result.stats.totalTime !== 10) {
-      throw new Error(`Expected 10s, got ${result.stats.totalTime}s. Start: ${result.trackPoints[0]?.time}, End: ${result.trackPoints[result.trackPoints.length - 1]?.time}`);
-    }
     expect(result.stats.totalTime).toBe(10); // 10 seconds
     expect(result.stats.avgHr).toBe(145); // (140 + 150) / 2
     expect(result.stats.totalDistance).toBeGreaterThan(0);
