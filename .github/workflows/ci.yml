@@ -1,0 +1,31 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: 'npm'
+
+      - run: npm ci
+
+      - name: Lint
+        run: npx nx lint gpx-viewer
+
+      - name: Test
+        run: npx nx test gpx-viewer
+
+      - name: Build
+        run: npx nx build gpx-viewer
