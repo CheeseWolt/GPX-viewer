@@ -1,6 +1,6 @@
 'use client';
 
-import { MapContainer, TileLayer, Polyline, useMap } from 'react-leaflet';
+import { MapContainer, TileLayer, Polyline, Marker, useMap } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 import { useEffect } from 'react';
@@ -51,6 +51,8 @@ const MapComponent = ({ positions }: MapComponentProps) => {
                         positions={positions}
                         pathOptions={{ color: '#00d1b2', weight: 4, opacity: 0.8 }} // Bulma primary/teal color
                     />
+                    <Marker position={positions[0]} icon={L.divIcon({ className: 'custom-icon', html: '<div style="font-size: 24px;">🚩</div>', iconSize: [30, 30], iconAnchor: [15, 30] })} />
+                    <Marker position={positions[positions.length - 1]} icon={L.divIcon({ className: 'custom-icon', html: '<div style="font-size: 24px;">🏁</div>', iconSize: [30, 30], iconAnchor: [5, 30] })} />
                     <BoundsFitter positions={positions} />
                 </>
             )}
