@@ -1,5 +1,7 @@
 # GPX Viewer
 
+[![CI](https://github.com/CheeseWolt/GPX-viewer/actions/workflows/ci.yml/badge.svg)](https://github.com/CheeseWolt/GPX-viewer/actions/workflows/ci.yml)
+
 A modern, dark-mode web application to visualize GPX tracks from your running or cycling activities. Built with Next.js, React-Leaflet, and Mapbox.
 
 ![GPX Viewer Dashboard](https://github.com/CheeseWolt/GPX-viewer/raw/main/screenshot.png)
