@@ -1,7 +1,12 @@
 'use client';
 
 import { useGpx } from '../providers';
-import MapComponent from '../components/MapComponent';
+import dynamic from 'next/dynamic';
+
+const MapComponent = dynamic(() => import('../components/MapComponent'), {
+    ssr: false,
+    loading: () => <div className="notification is-dark glass-panel">Chargement de la carte...</div>
+});
 
 export default function MapPage() {
     const { gpxData, loading } = useGpx();

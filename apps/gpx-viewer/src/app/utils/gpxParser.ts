@@ -1,4 +1,5 @@
 import { gpx } from '@mapbox/togeojson';
+import { DOMParser as XmlDomParser } from '@xmldom/xmldom';
 
 export interface TrackPoint {
     lat: number;
@@ -26,7 +27,10 @@ export interface ParsedGpx {
 }
 
 export const parseGpx = (gpxContent: string): ParsedGpx => {
-    const parser = new DOMParser();
+    const parser = typeof window !== 'undefined' && window.DOMParser
+        ? new window.DOMParser()
+        : new XmlDomParser();
+
     const xmlDoc = parser.parseFromString(gpxContent.trim(), 'text/xml');
     const geoJson = gpx(xmlDoc);
 

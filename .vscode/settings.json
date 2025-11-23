@@ -1,3 +1,6 @@
 {
-    "jestrunner.jestCommand": "npx nx test gpx-viewer --"
+    "jestrunner.jestCommand": "npx nx test gpx-viewer --",
+    "github-actions.workflows.pinned.workflows": [
+        ".github/workflows/ci.yml"
+    ]
 }
